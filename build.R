@@ -6,18 +6,20 @@ local({
   a = commandArgs(TRUE)
   d = gsub('^_|[.][a-zA-Z]+$', '', a[1])
 
-
 	## Set base.url wrt repository
 	if (!file.exists('_config.yml')) 
 		return()
 
-  x <- iconv(readLines('_config.yml', encoding = 'UTF-8'), 'UTF-8')
-	repo <- grep('^repo:\\s*[a-z]+\\s*$', x, value = TRUE)
-	print(repo)
+	library(yaml)
+  config <- yaml::yaml.load_file('_config.yml')
+	repo <- config$repo 
 	if(is.character(repo) && length(repo) > 1){
 		repo <- strsplit(repo, ':\\s*')[[1]][2]
-		if(length(grep('*.github.io', repo)) == 1 || repo == 'labnotebook') 
+		if(length(grep('*.github.io', repo)) == 1 || repo == 'labnotebook') { 
 			repo <- ""
+		}
+	} else {
+			repo <- paste0(repo, '/')
 	}
 	## Default to png since svgs with lots of points can be huge and also choke pandoc
 	## Cache in an underscored dir since we never want to commit cache
@@ -29,7 +31,7 @@ local({
 	  message = FALSE,
     warning = FALSE,
 		dev = 'png',
-		fig.cap=""
+		fig.cap = ""
   )
 
 	## Embed svgs directly -- doesn't work, causes weird knitr errors instead
