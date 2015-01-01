@@ -8,13 +8,17 @@ local({
 
 
 	## Set base.url wrt repository
-	if (!file.exists('_config.yml')) return()
-  x = iconv(readLines('_config.yml', encoding = 'UTF-8'), 'UTF-8')
-	repo = grep('^repo:\\s*[a-z]+\\s*$', x, value = TRUE)
-	repo = strsplit(repo, ':\\s*')[[1]][2]
-	if(length(grep('*.github.io', repo)) == 1) repo = ""
-	if(repo == 'labnotebook') repo = ""
+	if (!file.exists('_config.yml')) 
+		return()
 
+  x <- iconv(readLines('_config.yml', encoding = 'UTF-8'), 'UTF-8')
+	repo <- grep('^repo:\\s*[a-z]+\\s*$', x, value = TRUE)
+	print(repo)
+	if(is.character(repo) && length(repo) > 1){
+		repo <- strsplit(repo, ':\\s*')[[1]][2]
+		if(length(grep('*.github.io', repo)) == 1 || repo == 'labnotebook') 
+			repo <- ""
+	}
 	## Default to png since svgs with lots of points can be huge and also choke pandoc
 	## Cache in an underscored dir since we never want to commit cache
 	## figures in a usable path, though excluded in _config.yml since we embed as data_uris
