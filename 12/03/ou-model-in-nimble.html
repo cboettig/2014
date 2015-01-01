@@ -116,7 +116,7 @@ data &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span c
 <pre><code>sigma.x not provided, attempting symbolic derivation.</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data)</code></pre>
 <figure>
-<img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-2-1.png" />
+<img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-2-1.png" />
 </figure>
 <p>Specify this model in Nimble BUGS code</p>
 <pre class="sourceCode r"><code class="sourceCode r">ou &lt;-<span class="st"> </span><span class="kw">modelCode</span>({
@@ -155,7 +155,7 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
 <span class="kw">plot</span>(samples[ , <span class="st">&#39;theta&#39;</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;iteration&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(theta))
 <span class="kw">plot</span>(samples[ , <span class="st">&#39;r&#39;</span>], samples[ , <span class="st">&#39;sigma&#39;</span>], <span class="dt">xlab =</span> <span class="kw">expression</span>(r), <span class="dt">ylab =</span> <span class="kw">expression</span>(simga))
 <span class="kw">hist</span>(samples[, <span class="st">&#39;theta&#39;</span>])</code></pre>
-<p><img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-1.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-2.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-3.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-4.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-5.png" /></p>
+<p><img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-1.png" /> <img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-2.png" /> <img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-3.png" /> <img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-4.png" /> <img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-5.png" /></p>
 <h3 id="block-sampler">Block sampler</h3>
 <pre class="sourceCode r"><code class="sourceCode r">ou_spec$<span class="kw">addSampler</span>(<span class="st">&quot;RW_block&quot;</span>, <span class="kw">list</span>(<span class="dt">targetNodes=</span><span class="kw">c</span>(<span class="st">&#39;r&#39;</span>,<span class="st">&#39;sigma&#39;</span>,<span class="st">&#39;theta&#39;</span>), <span class="dt">adaptInterval=</span><span class="dv">100</span>))</code></pre>
 <pre><code>[4] RW_block sampler;   targetNodes: r, sigma, theta,  adaptive: TRUE,  adaptInterval: 100,  scale: 1,  propCov: identity</code></pre>
@@ -172,7 +172,7 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
 <span class="kw">plot</span>(samples2[ , <span class="st">&#39;theta&#39;</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;iteration&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(theta))
 <span class="kw">plot</span>(samples2[ , <span class="st">&#39;r&#39;</span>], samples[ , <span class="st">&#39;sigma&#39;</span>], <span class="dt">xlab =</span> <span class="kw">expression</span>(r), <span class="dt">ylab =</span> <span class="kw">expression</span>(simga))
 <span class="kw">hist</span>(samples2[ , <span class="st">&#39;theta&#39;</span>])</code></pre>
-<p><img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-1.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-2.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-3.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-4.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-5.png" /></p>
+<p><img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-1.png" /> <img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-2.png" /> <img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-3.png" /> <img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-4.png" /> <img src="/2014/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-5.png" /></p>
 <hr />
 
     </article>
@@ -206,7 +206,7 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="/2014/categories.html#ecology">ecology</a>
     
     </p>
 
@@ -214,7 +214,7 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#earlywarning">#earlywarning</a>
+			href="/2014/tags.html#earlywarning">#earlywarning</a>
     </p>
 
   <br/>
@@ -222,7 +222,7 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
   
 
   <br/>
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/2014/commit/1d87b1d036a60a7549b898a6036d8ec62ae4bd89/_posts/2014-12-03-ou-model-in-nimble.md"> 1d87b1d036a60a7549b898a6036d8ec62ae4bd89</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/2014/commit/5cef3563b253f4412005895be1bbb97c2d41a388/_posts/2014-12-03-ou-model-in-nimble.md"> 5cef3563b253f4412005895be1bbb97c2d41a388</a></small></p>
     
   <br/>
   
