@@ -1,15 +1,19 @@
 library("knitr")
 library("methods")
-local({
-  if (!file.exists('_config.yml')) return()
-  x = iconv(readLines('_config.yml', encoding = 'UTF-8'), 'UTF-8')
-  x = grep('^markdown:\\s*[a-z]+\\s*$', x, value = TRUE)
-})
 
 local({
   # input/output filenames are passed as two additional arguments to Rscript
   a = commandArgs(TRUE)
   d = gsub('^_|[.][a-zA-Z]+$', '', a[1])
+
+
+	## Set base.url wrt repository
+	if (!file.exists('_config.yml')) return()
+  x = iconv(readLines('_config.yml', encoding = 'UTF-8'), 'UTF-8')
+	repo = grep('^repo:\\s*[a-z]+\\s*$', x, value = TRUE)
+	repo = strsplit(repo, ':\\s*')[[1]][2]
+	if(length(grep('*.github.io', repo)) == 1) repo = ""
+	if(repo == 'labnotebook') repo = ""
 
 	## Default to png since svgs with lots of points can be huge and also choke pandoc
 	## Cache in an underscored dir since we never want to commit cache
@@ -46,7 +50,7 @@ local({
 		}
 #	knitr::opts_knit$set(upload.fun = embed)
 
-  knitr::opts_knit$set(base.url = '/')
+  knitr::opts_knit$set(base.url = paste0('/', repo))
   knitr::opts_knit$set(width = 70)
   knitr::knit(a[1], a[2], quiet = TRUE, encoding = 'UTF-8', envir = .GlobalEnv)
 })
