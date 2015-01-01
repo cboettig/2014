@@ -1,5 +1,8 @@
  
-http://www.carlboettiger.info/2014/sitemap.txt 
+http://www.carlboettiger.info/2014/archive.html  
+http://www.carlboettiger.info/2014/categories.html  
+http://www.carlboettiger.info/2014/sitemap.txt  
+http://www.carlboettiger.info/2014/tags.html 
 
  
 http://www.carlboettiger.info/2014/12/11/rrhack-notes.html  
