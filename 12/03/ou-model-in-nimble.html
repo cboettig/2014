@@ -116,7 +116,7 @@ data &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span c
 <pre><code>sigma.x not provided, attempting symbolic derivation.</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data)</code></pre>
 <figure>
-<img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" /><figcaption>plot of chunk unnamed-chunk-2</figcaption>
+<img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-2-1.png" />
 </figure>
 <p>Specify this model in Nimble BUGS code</p>
 <pre class="sourceCode r"><code class="sourceCode r">ou &lt;-<span class="st"> </span><span class="kw">modelCode</span>({
@@ -155,7 +155,7 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
 <span class="kw">plot</span>(samples[ , <span class="st">&#39;theta&#39;</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;iteration&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(theta))
 <span class="kw">plot</span>(samples[ , <span class="st">&#39;r&#39;</span>], samples[ , <span class="st">&#39;sigma&#39;</span>], <span class="dt">xlab =</span> <span class="kw">expression</span>(r), <span class="dt">ylab =</span> <span class="kw">expression</span>(simga))
 <span class="kw">hist</span>(samples[, <span class="st">&#39;theta&#39;</span>])</code></pre>
-<p><img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-1.png" alt="plot of chunk unnamed-chunk-8" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-2.png" alt="plot of chunk unnamed-chunk-8" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-3.png" alt="plot of chunk unnamed-chunk-8" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-4.png" alt="plot of chunk unnamed-chunk-8" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-5.png" alt="plot of chunk unnamed-chunk-8" /></p>
+<p><img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-1.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-2.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-3.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-4.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-8-5.png" /></p>
 <h3 id="block-sampler">Block sampler</h3>
 <pre class="sourceCode r"><code class="sourceCode r">ou_spec$<span class="kw">addSampler</span>(<span class="st">&quot;RW_block&quot;</span>, <span class="kw">list</span>(<span class="dt">targetNodes=</span><span class="kw">c</span>(<span class="st">&#39;r&#39;</span>,<span class="st">&#39;sigma&#39;</span>,<span class="st">&#39;theta&#39;</span>), <span class="dt">adaptInterval=</span><span class="dv">100</span>))</code></pre>
 <pre><code>[4] RW_block sampler;   targetNodes: r, sigma, theta,  adaptive: TRUE,  adaptInterval: 100,  scale: 1,  propCov: identity</code></pre>
@@ -172,7 +172,7 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
 <span class="kw">plot</span>(samples2[ , <span class="st">&#39;theta&#39;</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;iteration&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(theta))
 <span class="kw">plot</span>(samples2[ , <span class="st">&#39;r&#39;</span>], samples[ , <span class="st">&#39;sigma&#39;</span>], <span class="dt">xlab =</span> <span class="kw">expression</span>(r), <span class="dt">ylab =</span> <span class="kw">expression</span>(simga))
 <span class="kw">hist</span>(samples2[ , <span class="st">&#39;theta&#39;</span>])</code></pre>
-<p><img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-1.png" alt="plot of chunk unnamed-chunk-13" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-2.png" alt="plot of chunk unnamed-chunk-13" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-3.png" alt="plot of chunk unnamed-chunk-13" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-4.png" alt="plot of chunk unnamed-chunk-13" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-5.png" alt="plot of chunk unnamed-chunk-13" /></p>
+<p><img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-1.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-2.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-3.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-4.png" /> <img src="/assets/figures/posts/2014-12-03-ou-model-in-nimble/unnamed-chunk-13-5.png" /></p>
 <hr />
 
     </article>
@@ -188,10 +188,10 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
  <br />
 
   
-    <p><a class="btn btn-default" rel="prev" href='/12/03/nimble-explore.html'><i class="icon-chevron-left"></i> prev</a>
+	<p><a class="btn btn-default" rel="prev" href='/2014/12/03/nimble-explore.html'><i class="icon-chevron-left"></i> prev</a>
   
   
-  <a class="btn btn-default" rel="next" href='/12/04/lsn-nimble.html'>next <i class="icon-chevron-right"></i></a></p>
+  <a class="btn btn-default" rel="next" href='/2014/12/04/lsn-nimble.html'>next <i class="icon-chevron-right"></i></a></p>
   
 
   <br />
@@ -222,7 +222,7 @@ ou_mcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(ou_R
   
 
   <br/>
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/2014/commit/cc0b96e261b4289ee9b29433681d515080c453cd/_posts/2014-12-03-ou-model-in-nimble.md"> cc0b96e261b4289ee9b29433681d515080c453cd</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/2014/commit/fc18840d23fc96afcd17c82857df42ae2774da8a/_posts/2014-12-03-ou-model-in-nimble.md"> fc18840d23fc96afcd17c82857df42ae2774da8a</a></small></p>
     
   <br/>
   

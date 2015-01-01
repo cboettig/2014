@@ -116,7 +116,7 @@ data &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span c
 <pre><code>sigma.x not provided, attempting symbolic derivation.</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data)</code></pre>
 <figure>
-<img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-1-1.svg" alt="plot of chunk unnamed-chunk-1" /><figcaption>plot of chunk unnamed-chunk-1</figcaption>
+<img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-1-1.svg" />
 </figure>
 <h2 id="lsn-version">LSN version</h2>
 <p>Test case: Set prior for <code>m</code> <span class="math">\(\approx 0\)</span>:</p>
@@ -270,12 +270,12 @@ Cmcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(Rmcmc,
 <span class="kw">plot</span>(samples[ , <span class="st">&#39;sigma_x&#39;</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;iteration&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(sigma[x]))
 <span class="kw">plot</span>(samples[ , <span class="st">&#39;sigma_y&#39;</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;iteration&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(sigma[y]))
 <span class="kw">plot</span>(samples[ , <span class="st">&#39;theta&#39;</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;iteration&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(theta))</code></pre>
-<p><img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-10-1.svg" alt="plot of chunk unnamed-chunk-10" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-10-2.svg" alt="plot of chunk unnamed-chunk-10" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-10-3.svg" alt="plot of chunk unnamed-chunk-10" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-10-4.svg" alt="plot of chunk unnamed-chunk-10" /></p>
+<p><img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-10-1.svg" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-10-2.svg" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-10-3.svg" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-10-4.svg" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(samples[, <span class="st">&#39;m&#39;</span>], <span class="dt">xlab =</span> <span class="st">&#39;m&#39;</span>)
 <span class="kw">hist</span>(samples[, <span class="st">&#39;sigma_x&#39;</span>], <span class="dt">xlab =</span> <span class="kw">expression</span>(sigma[x]))
 <span class="kw">hist</span>(samples[, <span class="st">&#39;sigma_y&#39;</span>], <span class="dt">xlab =</span> <span class="kw">expression</span>(sigma[y]))
 <span class="kw">hist</span>(samples[, <span class="st">&#39;theta&#39;</span>], <span class="dt">xlab =</span> <span class="kw">expression</span>(theta))</code></pre>
-<p><img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-11-1.svg" alt="plot of chunk unnamed-chunk-11" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-11-2.svg" alt="plot of chunk unnamed-chunk-11" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-11-3.svg" alt="plot of chunk unnamed-chunk-11" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-11-4.svg" alt="plot of chunk unnamed-chunk-11" /></p>
+<p><img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-11-1.svg" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-11-2.svg" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-11-3.svg" /> <img src="/assets/figures/posts/2014-12-04-lsn-nimble/unnamed-chunk-11-4.svg" /></p>
 
     </article>
   </div>
@@ -290,10 +290,10 @@ Cmcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(Rmcmc,
  <br />
 
   
-    <p><a class="btn btn-default" rel="prev" href='/12/03/ou-model-in-nimble.html'><i class="icon-chevron-left"></i> prev</a>
+	<p><a class="btn btn-default" rel="prev" href='/2014/12/03/ou-model-in-nimble.html'><i class="icon-chevron-left"></i> prev</a>
   
   
-  <a class="btn btn-default" rel="next" href='/12/07/self-destroy-droplet-on-completion.html'>next <i class="icon-chevron-right"></i></a></p>
+  <a class="btn btn-default" rel="next" href='/2014/12/07/self-destroy-droplet-on-completion.html'>next <i class="icon-chevron-right"></i></a></p>
   
 
   <br />
@@ -324,7 +324,7 @@ Cmcmc &lt;-<span class="st"> </span><span class="kw">compileNimble</span>(Rmcmc,
   
 
   <br/>
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/2014/commit/cc0b96e261b4289ee9b29433681d515080c453cd/_posts/2014-12-04-lsn-nimble.md"> cc0b96e261b4289ee9b29433681d515080c453cd</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/2014/commit/fc18840d23fc96afcd17c82857df42ae2774da8a/_posts/2014-12-04-lsn-nimble.md"> fc18840d23fc96afcd17c82857df42ae2774da8a</a></small></p>
     
   <br/>
   
