@@ -31,7 +31,7 @@
   <p><i class="icon-list"></i> Posted in 
     {% for category in page.categories %} 
       <a rel="dc:subject" class="category" 
-         href="/categories.html#{{ category | cgi_escape }}">{{ category }}</a>
+         href="/{{site.repo}}/categories.html#{{ category | cgi_escape }}">{{ category }}</a>
     {% unless page.categories.last == category %}, {% endunless %}
     {% endfor %}</p>
 
@@ -39,7 +39,7 @@
     {% for tag in page.tags %}
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#{{ tag | cgi_escape }}">#{{ tag }}</a>{% unless page.tags.last == tag %}, {% endunless %}
+			href="/{{site.repo}}/tags.html#{{ tag | cgi_escape }}">#{{ tag }}</a>{% unless page.tags.last == tag %}, {% endunless %}
     {% endfor %}</p>
 
   <br/>
