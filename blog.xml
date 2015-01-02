@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Lab Notebook - R</title>
- <link href="/blog.xml" rel="self"/>
+ <title>Lab Notebook - blog</title>
+ <link href="/2014/blog.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-01-01T21:16:42+00:00</updated>
- <id>http://www.carlboettiger.info</id>
+ <updated>2015-01-02T03:21:44+00:00</updated>
+ <id>http://www.carlboettiger.info/2014</id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
@@ -14,7 +14,7 @@
  
  <entry>
    <title>Three Interfaces For Docker</title>
-   <link href="/11/03/three-interfaces-for-Docker.html"/>
+	 <link href="/2014/11/03/three-interfaces-for-Docker.html"/>
    <updated>2014-11-03T00:00:00+00:00</updated>
    <id>/11/03/three-interfaces-for-Docker</id>
    <content type="html">&lt;p&gt;Here I outline three broad, different strategies for incorporating Docker into a user’s workflow, particularly from the perspective of an instructor getting a group of students up and running in a containerized environment, but also in the context of more generic collaborations. The options require progressively more setup and result in a progressively more ‘native’ feel to running Docker. My emphasis is on running Dockerized R applications and RStudio, though much the same thing can be accomplished with iPython notebooks and many other web apps.&lt;/p&gt;
@@ -83,7 +83,7 @@
  
  <entry>
    <title>Response To Software Discovery Index Report</title>
-   <link href="/10/08/response-to-software-discovery-index-report.html"/>
+	 <link href="/2014/10/08/response-to-software-discovery-index-report.html"/>
    <updated>2014-10-08T00:00:00+00:00</updated>
    <id>/10/08/response-to-software-discovery-index-report</id>
    <content type="html">&lt;p&gt;The NIH has recently announced the &lt;a href=&quot;http://softwarediscoveryindex.org/report&quot;&gt;report&lt;/a&gt; of a landmark meeting which presents a vision for a &lt;em&gt;Software Discovery Index&lt;/em&gt; (SDI). The report is both timely and focused on the key issues of locating, citing, reusing software:&lt;/p&gt;
@@ -138,7 +138,7 @@ C. IMPLEMENTATION ROADMAP
  
  <entry>
    <title>Thoughts On Harte Interview</title>
-   <link href="/09/05/thoughts-on-Harte-interview.html"/>
+	 <link href="/2014/09/05/thoughts-on-Harte-interview.html"/>
    <updated>2014-09-05T00:00:00+00:00</updated>
    <id>/09/05/thoughts-on-Harte-interview</id>
    <content type="html">&lt;p&gt;Read this delightful &lt;a href=&quot;http://www.biodiverseperspectives.com/2014/08/31/diverse-introspectives-a-conversation-with-john-harte/&quot;&gt;John Harte Interview&lt;/a&gt; (ht &lt;span class=&quot;citation&quot; data-cites=&quot;DynamicEcology&quot;&gt;@DynamicEcology&lt;/span&gt;) which resonates rather well with me (no surprise given our common background). Nevertheless, I would have to push back on a few pieces.&lt;/p&gt;
@@ -158,7 +158,7 @@ C. IMPLEMENTATION ROADMAP
  
  <entry>
    <title>Docker Notes</title>
-   <link href="/08/14/docker-notes.html"/>
+	 <link href="/2014/08/14/docker-notes.html"/>
    <updated>2014-08-14T00:00:00+00:00</updated>
    <id>/08/14/docker-notes</id>
    <content type="html">&lt;p&gt;Ticking through a few more of the challenges I raised in my &lt;a href=&quot;http://www.carlboettiger.info/2014/08/07/too-much-fun-with-docker.html&quot;&gt;first post on docker&lt;/a&gt;; here I explore some of the issues about facilitating interaction with a docker container so that a user’s experience is more similar to working in their own environment and less like working on a remote terminal over ssh. While technically minor, these issues are probably the first stumbling blocks in making this a valid platform for new users.&lt;/p&gt;
@@ -182,7 +182,7 @@ C. IMPLEMENTATION ROADMAP
  
  <entry>
    <title>An appropriate amount of fun with docker?</title>
-   <link href="/08/08/an-appropriate-amount-of-fun-with-docker.html"/>
+	 <link href="/2014/08/08/an-appropriate-amount-of-fun-with-docker.html"/>
    <updated>2014-08-08T00:00:00+00:00</updated>
    <id>/08/08/an-appropriate-amount-of-fun-with-docker</id>
    <content type="html">&lt;p&gt;&lt;em&gt;An update on my exploration with Docker. Title courtesy of &lt;a href=&quot;https://twitter.com/DistribEcology/status/497523435371638784&quot;&gt;Ted&lt;/a&gt;, with my hopes that this really does move us in a direction where we can spend less time thinking about the tools and computational environments. Not there yet though&lt;/em&gt;&lt;/p&gt;
@@ -216,7 +216,7 @@ C. IMPLEMENTATION ROADMAP
  
  <entry>
    <title>Too Much Fun With Docker</title>
-   <link href="/08/07/too-much-fun-with-docker.html"/>
+	 <link href="/2014/08/07/too-much-fun-with-docker.html"/>
    <updated>2014-08-07T00:00:00+00:00</updated>
    <id>/08/07/too-much-fun-with-docker</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This post was originally drafted as a set of questions to the revived &lt;a href=&quot;https://groups.google.com/forum/#!forum/ropensci-discuss&quot;&gt;ropensci-discuss list&lt;/a&gt;, hopefully readers might join the discussion from there.&lt;/p&gt;
@@ -262,7 +262,7 @@ I would like a way for a collaborator who knows a little R to be able to open my
  
  <entry>
    <title>Is statistical software harmful?</title>
-   <link href="/06/04/is-statistical-software-harmful.html"/>
+	 <link href="/2014/06/04/is-statistical-software-harmful.html"/>
    <updated>2014-06-04T00:00:00+00:00</updated>
    <id>/06/04/is-statistical-software-harmful</id>
    <content type="html">&lt;p&gt;Ben Bolker has an excellent post on this complex issue over &lt;a href=&quot;http://dynamicecology.wordpress.com/2014/06/04/guest-post-is-statistical-software-harmful&quot;&gt;at Dynamic Ecology&lt;/a&gt;, which got me thinking about writing my own thoughts on the topic in reply.&lt;/p&gt;
@@ -292,7 +292,7 @@ I would like a way for a collaborator who knows a little R to be able to open my
  
  <entry>
    <title>Plos Data Sharing Policy Reflections</title>
-   <link href="/05/30/PLoS-data-sharing-policy-reflections.html"/>
+	 <link href="/2014/05/30/PLoS-data-sharing-policy-reflections.html"/>
    <updated>2014-05-30T00:00:00+00:00</updated>
    <id>/05/30/PLoS-data-sharing-policy-reflections</id>
    <content type="html">&lt;p&gt;PLOS has posted an &lt;a href=&quot;http://blogs.plos.org/biologue/2014/05/30/plos-data-policy-update/&quot;&gt;excellent update&lt;/a&gt; reflecting on their experiences a few months in to their new data sharing policy, which requires authors to include a statement of where the data can be obtained rather than providing it upon request. They do a rather excellent job of highlighting common concerns and offering well justified and explained replies where appropriate.&lt;/p&gt;
@@ -342,7 +342,7 @@ to place more trust in the opinions of people over current metrics.)--&gt;&lt;/p
  
  <entry>
    <title>Integrating Github Project Repos Into The Notebook</title>
-   <link href="/05/07/integrating-github-project-repos-into-the-notebook.html"/>
+	 <link href="/2014/05/07/integrating-github-project-repos-into-the-notebook.html"/>
    <updated>2014-05-07T00:00:00+00:00</updated>
    <id>/05/07/integrating-github-project-repos-into-the-notebook</id>
    <content type="html">&lt;p&gt;For a while now most of my active research is developed through &lt;code&gt;.Rmd&lt;/code&gt; scripts connected to a particular project repository (something I discuss at length in &lt;a href=&quot;http://www.carlboettiger.info/2014/05/05/knitr-workflow-challenges.html&quot;&gt;deep challenges with knitr workflows&lt;/a&gt;). In the &lt;a href=&quot;http://www.carlboettiger.info/2014/05/06/steps-to-a-more-portable-workflow.html&quot;&gt;previous post&lt;/a&gt; I discuss creating a &lt;code&gt;template&lt;/code&gt; package with a more transparent organization of files, such as moving manuscripts from &lt;code&gt;inst/doc/&lt;/code&gt; to simply &lt;code&gt;manuscripts/&lt;/code&gt;. This left these exploratory analysis scripts in &lt;code&gt;inst/examples&lt;/code&gt; in a similarly unintuitive place. Though I like having these scripts as part of the repository (which keeps everything for a project in one place, as it were), like the manuscript they aren’t really part of the R package, particularly as I have gotten better at creating proper unit tests in place of just rerunning dynamic scripts occasionally.&lt;/p&gt;
@@ -375,7 +375,7 @@ to place more trust in the opinions of people over current metrics.)--&gt;&lt;/p
  
  <entry>
    <title>Steps To A More Portable Workflow</title>
-   <link href="/05/06/steps-to-a-more-portable-workflow.html"/>
+	 <link href="/2014/05/06/steps-to-a-more-portable-workflow.html"/>
    <updated>2014-05-06T00:00:00+00:00</updated>
    <id>/05/06/steps-to-a-more-portable-workflow</id>
    <content type="html">&lt;p&gt;While I have made &lt;a href=&quot;http://www.carlboettiger.info/2012/05/06/research-workflow.html&quot;&gt;my workflow&lt;/a&gt; for most of my ongoing projects available on Github for some time, this does not mean that it has been particularly easy to follow. Further, as I move from project to project I have slowly improved how I handle projects. For instance, I have since added unit tests (with &lt;code&gt;testthat&lt;/code&gt;) and continuous integration (with &lt;a href=&quot;http://travis-ci.org&quot;&gt;travis-ci&lt;/a&gt;) to my repositories, and my handling of manuscripts has gotten more automated, with richer latex templates, yaml metadata, and simpler and more powerful makefiles.&lt;/p&gt;
@@ -397,7 +397,7 @@ to place more trust in the opinions of people over current metrics.)--&gt;&lt;/p
  
  <entry>
    <title>Deep challenges to dynamic documentation in daily workflows</title>
-   <link href="/05/05/knitr-workflow-challenges.html"/>
+	 <link href="/2014/05/05/knitr-workflow-challenges.html"/>
    <updated>2014-05-05T00:00:00+00:00</updated>
    <id>/05/05/knitr-workflow-challenges</id>
    <content type="html">&lt;p&gt;We often discuss dynamic documents such as &lt;code&gt;Sweave&lt;/code&gt; and &lt;code&gt;knitr&lt;/code&gt; in reference to final products such as publications or software package vignettes. In this case, all the elements involved are already fixed: external functions, code, text, and so forth. The dynamic documentation engine is really just a tool to combine them (knit them together). Using dynamic documentation on a day-to-day basis on ongoing research presents a compelling opportunity but a rather more complex challenge as well. The code base grows, some of it gets turned into external custom functions where it continues to change. One analysis script branches into multiple that vary this or that. The text and figures are likewise subject to the same revision as the code, expanding and contracting, or being removed or shunted off into an appendix.&lt;/p&gt;
@@ -468,7 +468,7 @@ to place more trust in the opinions of people over current metrics.)--&gt;&lt;/p
  
  <entry>
    <title>why I sign my reviews</title>
-   <link href="/05/04/why-I-sign-my-reviews.html"/>
+	 <link href="/2014/05/04/why-I-sign-my-reviews.html"/>
    <updated>2014-05-04T00:00:00+00:00</updated>
    <id>/05/04/why-I-sign-my-reviews</id>
    <content type="html">&lt;p&gt;For the past four years I have made an effort to sign all my reviews (which I try to keep to about one a month). It isn’t because I believe in radical openness or something crazy like that. Its really just my self interest involved – at least mostly. Writing a review is an incredibly time consuming, and largely thankless task. Supposedly anonymous peer review is supposed to protect the reviewer, particularly the scenario of the less established scientist critiquing the work of the more established. I am sure it occasionally serves that purpose. On the other hand, that very scenario can be the &lt;em&gt;most&lt;/em&gt; profitable time to sign a review. Really, when are you more likely to get an esteemed colleague to closely read your every argument than when you’re holding up their publication?&lt;/p&gt;
@@ -479,7 +479,7 @@ to place more trust in the opinions of people over current metrics.)--&gt;&lt;/p
  
  <entry>
    <title>Software Sustainability Issues In R</title>
-   <link href="/03/20/software-sustainability-issues-in-R.html"/>
+	 <link href="/2014/03/20/software-sustainability-issues-in-R.html"/>
    <updated>2014-03-20T00:00:00+00:00</updated>
    <id>/03/20/software-sustainability-issues-in-R</id>
    <content type="html">&lt;blockquote&gt;
@@ -495,7 +495,7 @@ to place more trust in the opinions of people over current metrics.)--&gt;&lt;/p
  
  <entry>
    <title>Startup Culture And Platforms For The Academy</title>
-   <link href="/01/23/Startup-Culture-and-Platforms-for-the-Academy.html"/>
+	 <link href="/2014/01/23/Startup-Culture-and-Platforms-for-the-Academy.html"/>
    <updated>2014-01-23T00:00:00+00:00</updated>
    <id>/01/23/Startup-Culture-and-Platforms-for-the-Academy</id>
    <content type="html">&lt;h2 id=&quot;scientific-research-moving-beyond-bubbles-to-platforms.&quot;&gt;Scientific Research: Moving beyond bubbles to platforms.&lt;/h2&gt;

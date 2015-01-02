@@ -1,6 +1,7 @@
  
 http://www.carlboettiger.info/2014/R.xml  
 http://www.carlboettiger.info/2014/archive.html  
+http://www.carlboettiger.info/2014/atom.xml  
 http://www.carlboettiger.info/2014/blog.xml  
 http://www.carlboettiger.info/2014/categories.html  
 http://www.carlboettiger.info/2014/sitemap.txt  

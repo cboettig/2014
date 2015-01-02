@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Lab Notebook - R</title>
- <link href="/R.xml" rel="self"/>
+ <link href="/2014/R.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-01-01T21:16:42+00:00</updated>
+ <updated>2015-01-02T03:21:44+00:00</updated>
  <id>http://www.carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -14,7 +14,7 @@
  
  <entry>
    <title>An appropriate amount of fun with docker?</title>
-   <link href="/08/08/an-appropriate-amount-of-fun-with-docker.html"/>
+	 <link href="/2014/08/08/an-appropriate-amount-of-fun-with-docker.html"/>
    <updated>2014-08-08T00:00:00+00:00</updated>
    <id>/08/08/an-appropriate-amount-of-fun-with-docker</id>
    <content type="html">&lt;p&gt;&lt;em&gt;An update on my exploration with Docker. Title courtesy of &lt;a href=&quot;https://twitter.com/DistribEcology/status/497523435371638784&quot;&gt;Ted&lt;/a&gt;, with my hopes that this really does move us in a direction where we can spend less time thinking about the tools and computational environments. Not there yet though&lt;/em&gt;&lt;/p&gt;
@@ -48,7 +48,7 @@
  
  <entry>
    <title>Is statistical software harmful?</title>
-   <link href="/06/04/is-statistical-software-harmful.html"/>
+	 <link href="/2014/06/04/is-statistical-software-harmful.html"/>
    <updated>2014-06-04T00:00:00+00:00</updated>
    <id>/06/04/is-statistical-software-harmful</id>
    <content type="html">&lt;p&gt;Ben Bolker has an excellent post on this complex issue over &lt;a href=&quot;http://dynamicecology.wordpress.com/2014/06/04/guest-post-is-statistical-software-harmful&quot;&gt;at Dynamic Ecology&lt;/a&gt;, which got me thinking about writing my own thoughts on the topic in reply.&lt;/p&gt;
@@ -78,7 +78,7 @@
  
  <entry>
    <title>Deep challenges to dynamic documentation in daily workflows</title>
-   <link href="/05/05/knitr-workflow-challenges.html"/>
+	 <link href="/2014/05/05/knitr-workflow-challenges.html"/>
    <updated>2014-05-05T00:00:00+00:00</updated>
    <id>/05/05/knitr-workflow-challenges</id>
    <content type="html">&lt;p&gt;We often discuss dynamic documents such as &lt;code&gt;Sweave&lt;/code&gt; and &lt;code&gt;knitr&lt;/code&gt; in reference to final products such as publications or software package vignettes. In this case, all the elements involved are already fixed: external functions, code, text, and so forth. The dynamic documentation engine is really just a tool to combine them (knit them together). Using dynamic documentation on a day-to-day basis on ongoing research presents a compelling opportunity but a rather more complex challenge as well. The code base grows, some of it gets turned into external custom functions where it continues to change. One analysis script branches into multiple that vary this or that. The text and figures are likewise subject to the same revision as the code, expanding and contracting, or being removed or shunted off into an appendix.&lt;/p&gt;
