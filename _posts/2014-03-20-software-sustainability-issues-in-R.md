@@ -1,4 +1,5 @@
 ---
+layout: post
 category: open-science
 tags: blog
 
