@@ -4,6 +4,7 @@ http://www.carlboettiger.info/2014/atom.xml
 http://www.carlboettiger.info/2014/blog.xml  
 http://www.carlboettiger.info/2014/categories.html  
 http://www.carlboettiger.info/2014/index.html  
+http://www.carlboettiger.info/2014/lab-notebook.html  
 http://www.carlboettiger.info/2014/sitemap.txt  
 http://www.carlboettiger.info/2014/tags.html 
 
