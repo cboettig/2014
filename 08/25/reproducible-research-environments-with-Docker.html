@@ -170,7 +170,7 @@
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">curl</span> -sSL https://get.docker.io/ubuntu/ <span class="kw">|</span> <span class="kw">sudo</span> sh</code></pre>
 <p>We’re now ready to launch RStudio using docker, just as we did locally above.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">docker</span> run -e USER=your_username -e=PASSWORD a_secure_pw \
-  <span class="kw">-d</span> -p 8787:8787 --name rstudio cboettig/rstudio</code></pre>
+  -d -p 8787:8787 --name rstudio cboettig/rstudio</code></pre>
 <p>Note that we pass a custom username and secure password in using the <code>-e</code> arguments since our RStudio instance will be publically reachable by it’s ip. We’ve also given the container a name <code>rstudio</code> so we can easily refer to it later. We now go to <code>http://&lt;your-droplet-ip-address&gt;:8787</code> and login with these custom credentials and we’re ready to compute.</p>
 <h3 id="saving-your-work">Saving your work</h3>
 <p>The best way to save your work is to commit your entire docker image. This will save all installed packages, active RStudio sessions, files, and everything else, even if we destroy the droplet later. This gives us the option of running our environment on a larger DigitalOcean image when the need arises, or running it locally using the <code>boot2docker</code> approach outlined above.</p>

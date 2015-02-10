@@ -117,17 +117,17 @@
 <span class="kw">mkdir</span> -p /opt/postgresql/data
 
 <span class="kw">docker</span> run --name=postgresql -d \
-  <span class="kw">-e</span> <span class="st">&#39;DB_NAME=gitlabhq_production&#39;</span> -e <span class="st">&#39;DB_USER=gitlab&#39;</span> -e <span class="st">&#39;DB_PASS=password&#39;</span> \
-  <span class="kw">-v</span> /opt/postgresql/data:/var/lib/postgresql \
-  <span class="kw">sameersbn</span>/postgresql:<span class="kw">latest</span>
+  -e <span class="st">&#39;DB_NAME=gitlabhq_production&#39;</span> -e <span class="st">&#39;DB_USER=gitlab&#39;</span> -e <span class="st">&#39;DB_PASS=password&#39;</span> \
+  -v /opt/postgresql/data:/var/lib/postgresql \
+  sameersbn/postgresql:latest
 <span class="kw">docker</span> run --name=redis -d sameersbn/redis:latest
 
 <span class="kw">docker</span> run --name=gitlab -d \
-  <span class="kw">--link</span> postgresql:postgresql \
-  <span class="kw">--link</span> redis:redisio \
-  <span class="kw">-p</span> 10080:80 -p 10022:22 \
-  <span class="kw">-v</span> /opt/gitlab/data:/home/git/data \
-    <span class="kw">sameersbn</span>/gitlab:<span class="kw">7.3.2-1</span></code></pre>
+  --link postgresql:postgresql \
+  --link redis:redisio \
+  -p 10080:80 -p 10022:22 \
+  -v /opt/gitlab/data:/home/git/data \
+    sameersbn/gitlab:7.3.2-1</code></pre>
 <p>More consisely, do this with <a href="http://fig.sh">fig</a></p>
 <pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">gitlab:</span>
   <span class="fu">image:</span> sameersbn/gitlab:7.3.2-1
@@ -157,14 +157,14 @@
 <p>Looks like we have to run the original version if we want to keep our database. But no go since sql database information is lost:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">docker</span> pull gitlab:7.2.1-1
 <span class="kw">docker</span> run --name=gitlab -d \
-  <span class="kw">-p</span> 10080:80 -p 10022:22 \
-  <span class="kw">-v</span> /opt/gitlab/data:/home/git/data \
-    <span class="kw">sameersbn</span>/gitlab:<span class="kw">7.2.1-1</span>
+  -p 10080:80 -p 10022:22 \
+  -v /opt/gitlab/data:/home/git/data \
+    sameersbn/gitlab:7.2.1-1
 <span class="kw">docker</span> stop gitlab
 <span class="kw">docker</span> run --rm -it \
-  <span class="kw">-p</span> 20080:80 -p 20022:22 \
-  <span class="kw">-v</span> /opt/gitlab/data:/home/git/data \
-    <span class="kw">sameersbn</span>/gitlab:<span class="kw">7.2.1-1</span> app:rake gitlab:backup:restore
+  -p 20080:80 -p 20022:22 \
+  -v /opt/gitlab/data:/home/git/data \
+    sameersbn/gitlab:7.2.1-1 app:rake gitlab:backup:restore
 <span class="kw">docker</span> restart gitlab</code></pre>
 <h2 id="drone">Drone</h2>
 <p>Ah, Drone now provides their own Dockerfile, which we can grab and build for the latest Drone:</p>
@@ -172,11 +172,11 @@
 <span class="kw">docker</span> build -t drone/drone drone</code></pre>
 <p>Then we can run, linking volumes appropriately:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">docker</span> run --name drone -d -p 88:80 \
-<span class="kw">-v</span> /var/run/docker.sock:/var/run/docker.sock \
-<span class="kw">-t</span> \
-<span class="kw">-e</span> DRONE_GITHUB_CLIENT=<span class="kw">&lt;</span>clientkey<span class="kw">&gt;</span> \
-<span class="kw">-e</span> DRONE_GITHUB_SECRET=<span class="kw">&lt;</span>secretkey<span class="kw">&gt;</span> \
-<span class="kw">drone/drone</span><span class="st">&quot;</span></code></pre>
+-v /var/run/docker.sock:/var/run/docker.sock \
+-t \
+-e DRONE_GITHUB_CLIENT=<span class="kw">&lt;</span>clientkey<span class="kw">&gt;</span> \
+-e DRONE_GITHUB_SECRET=<span class="kw">&lt;</span>secretkey<span class="kw">&gt;</span> \
+drone/drone<span class="st">&quot;</span></code></pre>
 <p>Note that this doesn’t work with a <code>drone.toml</code> file even when linking volumes etc., see <a href="https://github.com/drone/drone/issues/580">#580</a>.</p>
 <p>Also note that this setup shares docker images with the host machine, rather than having a seperate library, which is rather good for saving space. I believe this should be trivial to back-up (just by exporting the container), but have to test that stil.</p>
 <p>These rather verbose docker calls for drone and gitlab make a great use-case for fig. Unfortunately, fig seems to crash out of memory on my tiny DO droplet, but running these commands manually works like a charm.</p>

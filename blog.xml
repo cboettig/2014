@@ -4,7 +4,7 @@
  <title>Lab Notebook - blog</title>
  <link href="/2014/blog.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-01-02T19:56:44+00:00</updated>
+ <updated>2015-02-10T20:37:42+00:00</updated>
  <id>http://www.carlboettiger.info/2014</id>
  <author>
    <name>Carl Boettiger</name>
@@ -117,8 +117,6 @@ c) Github provides somewhat limited query-able metadata, that doesn&#39;t captur
 Leveraging existing scientific data repositories by linking them to versioned releases on software repositories addresses each of these problems.
 
 --&gt;
-
-
 &lt;!--
 A. FRAMEWORK SUPPORTING THE SOFTWARE DISCOVERY INDEX
 Unique identifiers
@@ -131,8 +129,6 @@ Integrating with other repositories
 Evaluating progress and distinguishing this from other efforts
 C. IMPLEMENTATION ROADMAP
 --&gt;
-
-
 </content>
  </entry>
  
@@ -253,10 +249,6 @@ C. IMPLEMENTATION ROADMAP
 
 I would like a way for a collaborator who knows a little R to be able to open my .Rmd manuscript on his/her own computer, edit some parameters, recompile and view the pdf. RStudio w/ rmarkdown has gone a long way to making that happen.
 --&gt;
-
-
-
-
 </content>
  </entry>
  

@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/2014/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-01-02T19:56:44+00:00</updated>
+ <updated>2015-02-10T20:37:42+00:00</updated>
  <id>http://www.carlboettiger.info/2014</id>
  <author>
    <name>Carl Boettiger</name>
@@ -655,7 +655,6 @@ to use them, not just to save them time or make them more reproducible
 in the future, but help them right now to do something they cannot
 otherwise do.
 --&gt;
-
 &lt;!--
 
 ## Give them tools! ## 
@@ -681,9 +680,7 @@ otherwise do.
 - Social media: Github, Website &amp; blog, Twitter
 
 
---&gt; 
-
-
+--&gt;
 </content>
  </entry>
  
@@ -746,7 +743,7 @@ OPT &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot
  -e PATH=$PATH:/usr/local/texlive/2014/bin/x86_64-linux/ \
  rocker/rstudio&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can now log into RStudio, create a new Rnw file and presto, RStudio discovers the tex compilers and builds us a pdf. This does make our Docker execution lines a bit long, but that’s what &lt;a href=&quot;www.fig.sh&quot;&gt;fig&lt;/a&gt; is for. (Or a good ole Makefile).&lt;/p&gt;
-&lt;p&gt;Note this requires we build &lt;code&gt;texlive&lt;/code&gt; in a way that isolates it to it’s own path (e.g. &lt;code&gt;/usr/local/texlive&lt;/code&gt;). The default installation with &lt;code&gt;apt-get&lt;/code&gt; installs everything in separate locations that overlap with existing directories (like &lt;code&gt;/usr/bin&lt;/code&gt;), which makes linking clumsy or impossible (we would need separate paths for all the components, e.g. since shared libraries aren’t found under the &lt;code&gt;bin&lt;/code&gt; path, and we cannot link such a volume to another container without destroying everything in it’s &lt;code&gt;/usr/bin&lt;/code&gt;, clearly not a good idea). Instead, if we use the standard &lt;code&gt;texlive&lt;/code&gt; install script from &lt;a href=&quot;https://www.tug.org/texlive/&quot;&gt;https://www.tug.org/texlive/&lt;/a&gt;, this installs everything into &lt;code&gt;/usr/local/texlive&lt;/code&gt; which is much more portable as illustrated above. Not quite sure if it’s actually a good idea to build containers this way or not.&lt;/p&gt;
+&lt;p&gt;Note this requires we build &lt;code&gt;texlive&lt;/code&gt; in a way that isolates it to it’s own path (e.g. &lt;code&gt;/usr/local/texlive&lt;/code&gt;). The default installation with &lt;code&gt;apt-get&lt;/code&gt; installs everything in separate locations that overlap with existing directories (like &lt;code&gt;/usr/bin&lt;/code&gt;), which makes linking clumsy or impossible (we would need separate paths for all the components, e.g. since shared libraries aren’t found under the &lt;code&gt;bin&lt;/code&gt; path, and we cannot link such a volume to another container without destroying everything in it’s &lt;code&gt;/usr/bin&lt;/code&gt;, clearly not a good idea). Instead, if we use the standard &lt;code&gt;texlive&lt;/code&gt; install script from &lt;a href=&quot;https://www.tug.org/texlive/&quot; class=&quot;uri&quot;&gt;https://www.tug.org/texlive/&lt;/a&gt;, this installs everything into &lt;code&gt;/usr/local/texlive&lt;/code&gt; which is much more portable as illustrated above. Not quite sure if it’s actually a good idea to build containers this way or not.&lt;/p&gt;
 &lt;p&gt;I’ll keep shipping latex inside the &lt;code&gt;hadleyverse&lt;/code&gt; container (has about 300 MB of texlive that covers most common usecases), but this is certainly an intruging recipe to mix and match.&lt;/p&gt;
 </content>
  </entry>
@@ -831,7 +828,7 @@ OPT &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot
 &lt;p&gt;Meanwhile, I’ve found Pandoc’s templating system to be immensely powerful, particularly with the yaml headers now supported. To provide a lightweight way to deploy a website on a gh-pages branch of a new repository, I’ve found this system works quite well. I’ve illustrated this on my &lt;a href=&quot;https://github.com/cboettig/tree/gh-pages&quot;&gt;gh-pages branch of my template&lt;/a&gt; repository. Previously, this used Jekyll with the built-in redcarpet markdown parser to deploy markdown files in a style consistent with my notebook.&lt;/p&gt;
 &lt;p&gt;Now, I’ve stripped this down to simply use a pandoc template, pandoc YAML, and a Makefile to accomplish much the same thing.&lt;/p&gt;
 &lt;p&gt;I was dissapointed to see that the &lt;code&gt;_output.yaml&lt;/code&gt; used by rmarkdown for building multi-page websites did not leverage the generic &lt;code&gt;metadata.yaml&lt;/code&gt; approach already built into pandoc. This prevents us specifying custom generic metadata the way one does in Jekyll with &lt;code&gt;_config.yaml&lt;/code&gt;, as I describe in &lt;a href=&quot;https://github.com/rstudio/rmarkdown/issues/297&quot;&gt;rmarkdown#297&lt;/a&gt; I can work around this with the Makefile by calling pandoc manually with the additional &lt;code&gt;metadta.yaml&lt;/code&gt; file, as follows:&lt;/p&gt;
-&lt;pre class=&quot;Make&quot;&gt;&lt;code&gt;%.html: %.Rmd
+&lt;pre class=&quot;make&quot;&gt;&lt;code&gt;%.html: %.Rmd
   R --vanilla --slave -e &amp;quot;knitr::knit(&amp;#39;$&amp;lt;&amp;#39;)&amp;quot;
   pandoc --template _layouts/default.html metadata.yaml -o $@ $(basename $&amp;lt;).md
   rm $(basename $&amp;lt;).md
@@ -944,17 +941,17 @@ ls -l &lt;/code&gt;&lt;/pre&gt;
 &lt;span class=&quot;kw&quot;&gt;mkdir&lt;/span&gt; -p /opt/postgresql/data
 
 &lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; run --name=postgresql -d \
-  &lt;span class=&quot;kw&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;#39;DB_NAME=gitlabhq_production&amp;#39;&lt;/span&gt; -e &lt;span class=&quot;st&quot;&gt;&amp;#39;DB_USER=gitlab&amp;#39;&lt;/span&gt; -e &lt;span class=&quot;st&quot;&gt;&amp;#39;DB_PASS=password&amp;#39;&lt;/span&gt; \
-  &lt;span class=&quot;kw&quot;&gt;-v&lt;/span&gt; /opt/postgresql/data:/var/lib/postgresql \
-  &lt;span class=&quot;kw&quot;&gt;sameersbn&lt;/span&gt;/postgresql:&lt;span class=&quot;kw&quot;&gt;latest&lt;/span&gt;
+  -e &lt;span class=&quot;st&quot;&gt;&amp;#39;DB_NAME=gitlabhq_production&amp;#39;&lt;/span&gt; -e &lt;span class=&quot;st&quot;&gt;&amp;#39;DB_USER=gitlab&amp;#39;&lt;/span&gt; -e &lt;span class=&quot;st&quot;&gt;&amp;#39;DB_PASS=password&amp;#39;&lt;/span&gt; \
+  -v /opt/postgresql/data:/var/lib/postgresql \
+  sameersbn/postgresql:latest
 &lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; run --name=redis -d sameersbn/redis:latest
 
 &lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; run --name=gitlab -d \
-  &lt;span class=&quot;kw&quot;&gt;--link&lt;/span&gt; postgresql:postgresql \
-  &lt;span class=&quot;kw&quot;&gt;--link&lt;/span&gt; redis:redisio \
-  &lt;span class=&quot;kw&quot;&gt;-p&lt;/span&gt; 10080:80 -p 10022:22 \
-  &lt;span class=&quot;kw&quot;&gt;-v&lt;/span&gt; /opt/gitlab/data:/home/git/data \
-    &lt;span class=&quot;kw&quot;&gt;sameersbn&lt;/span&gt;/gitlab:&lt;span class=&quot;kw&quot;&gt;7.3.2-1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+  --link postgresql:postgresql \
+  --link redis:redisio \
+  -p 10080:80 -p 10022:22 \
+  -v /opt/gitlab/data:/home/git/data \
+    sameersbn/gitlab:7.3.2-1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;More consisely, do this with &lt;a href=&quot;http://fig.sh&quot;&gt;fig&lt;/a&gt;&lt;/p&gt;
 &lt;pre class=&quot;sourceCode yaml&quot;&gt;&lt;code class=&quot;sourceCode yaml&quot;&gt;&lt;span class=&quot;fu&quot;&gt;gitlab:&lt;/span&gt;
   &lt;span class=&quot;fu&quot;&gt;image:&lt;/span&gt; sameersbn/gitlab:7.3.2-1
@@ -984,14 +981,14 @@ ls -l &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Looks like we have to run the original version if we want to keep our database. But no go since sql database information is lost:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;&lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; pull gitlab:7.2.1-1
 &lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; run --name=gitlab -d \
-  &lt;span class=&quot;kw&quot;&gt;-p&lt;/span&gt; 10080:80 -p 10022:22 \
-  &lt;span class=&quot;kw&quot;&gt;-v&lt;/span&gt; /opt/gitlab/data:/home/git/data \
-    &lt;span class=&quot;kw&quot;&gt;sameersbn&lt;/span&gt;/gitlab:&lt;span class=&quot;kw&quot;&gt;7.2.1-1&lt;/span&gt;
+  -p 10080:80 -p 10022:22 \
+  -v /opt/gitlab/data:/home/git/data \
+    sameersbn/gitlab:7.2.1-1
 &lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; stop gitlab
 &lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; run --rm -it \
-  &lt;span class=&quot;kw&quot;&gt;-p&lt;/span&gt; 20080:80 -p 20022:22 \
-  &lt;span class=&quot;kw&quot;&gt;-v&lt;/span&gt; /opt/gitlab/data:/home/git/data \
-    &lt;span class=&quot;kw&quot;&gt;sameersbn&lt;/span&gt;/gitlab:&lt;span class=&quot;kw&quot;&gt;7.2.1-1&lt;/span&gt; app:rake gitlab:backup:restore
+  -p 20080:80 -p 20022:22 \
+  -v /opt/gitlab/data:/home/git/data \
+    sameersbn/gitlab:7.2.1-1 app:rake gitlab:backup:restore
 &lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; restart gitlab&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;drone&quot;&gt;Drone&lt;/h2&gt;
 &lt;p&gt;Ah, Drone now provides their own Dockerfile, which we can grab and build for the latest Drone:&lt;/p&gt;
@@ -999,11 +996,11 @@ ls -l &lt;/code&gt;&lt;/pre&gt;
 &lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; build -t drone/drone drone&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then we can run, linking volumes appropriately:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;&lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; run --name drone -d -p 88:80 \
-&lt;span class=&quot;kw&quot;&gt;-v&lt;/span&gt; /var/run/docker.sock:/var/run/docker.sock \
-&lt;span class=&quot;kw&quot;&gt;-t&lt;/span&gt; \
-&lt;span class=&quot;kw&quot;&gt;-e&lt;/span&gt; DRONE_GITHUB_CLIENT=&lt;span class=&quot;kw&quot;&gt;&amp;lt;&lt;/span&gt;clientkey&lt;span class=&quot;kw&quot;&gt;&amp;gt;&lt;/span&gt; \
-&lt;span class=&quot;kw&quot;&gt;-e&lt;/span&gt; DRONE_GITHUB_SECRET=&lt;span class=&quot;kw&quot;&gt;&amp;lt;&lt;/span&gt;secretkey&lt;span class=&quot;kw&quot;&gt;&amp;gt;&lt;/span&gt; \
-&lt;span class=&quot;kw&quot;&gt;drone/drone&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+-v /var/run/docker.sock:/var/run/docker.sock \
+-t \
+-e DRONE_GITHUB_CLIENT=&lt;span class=&quot;kw&quot;&gt;&amp;lt;&lt;/span&gt;clientkey&lt;span class=&quot;kw&quot;&gt;&amp;gt;&lt;/span&gt; \
+-e DRONE_GITHUB_SECRET=&lt;span class=&quot;kw&quot;&gt;&amp;lt;&lt;/span&gt;secretkey&lt;span class=&quot;kw&quot;&gt;&amp;gt;&lt;/span&gt; \
+drone/drone&lt;span class=&quot;st&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that this doesn’t work with a &lt;code&gt;drone.toml&lt;/code&gt; file even when linking volumes etc., see &lt;a href=&quot;https://github.com/drone/drone/issues/580&quot;&gt;#580&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Also note that this setup shares docker images with the host machine, rather than having a seperate library, which is rather good for saving space. I believe this should be trivial to back-up (just by exporting the container), but have to test that stil.&lt;/p&gt;
 &lt;p&gt;These rather verbose docker calls for drone and gitlab make a great use-case for fig. Unfortunately, fig seems to crash out of memory on my tiny DO droplet, but running these commands manually works like a charm.&lt;/p&gt;
@@ -1096,8 +1093,6 @@ c) Github provides somewhat limited query-able metadata, that doesn&#39;t captur
 Leveraging existing scientific data repositories by linking them to versioned releases on software repositories addresses each of these problems.
 
 --&gt;
-
-
 &lt;!--
 A. FRAMEWORK SUPPORTING THE SOFTWARE DISCOVERY INDEX
 Unique identifiers
@@ -1110,8 +1105,6 @@ Integrating with other repositories
 Evaluating progress and distinguishing this from other efforts
 C. IMPLEMENTATION ROADMAP
 --&gt;
-
-
 </content>
  </entry>
  
@@ -1590,7 +1583,7 @@ CMD    [&amp;quot;/usr/sbin/sshd&amp;quot;, &amp;quot;-D&amp;quot;]&lt;/code&gt;
 &lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;&lt;span class=&quot;kw&quot;&gt;curl&lt;/span&gt; -sSL https://get.docker.io/ubuntu/ &lt;span class=&quot;kw&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;sudo&lt;/span&gt; sh&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We’re now ready to launch RStudio using docker, just as we did locally above.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;&lt;span class=&quot;kw&quot;&gt;docker&lt;/span&gt; run -e USER=your_username -e=PASSWORD a_secure_pw \
-  &lt;span class=&quot;kw&quot;&gt;-d&lt;/span&gt; -p 8787:8787 --name rstudio cboettig/rstudio&lt;/code&gt;&lt;/pre&gt;
+  -d -p 8787:8787 --name rstudio cboettig/rstudio&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that we pass a custom username and secure password in using the &lt;code&gt;-e&lt;/code&gt; arguments since our RStudio instance will be publically reachable by it’s ip. We’ve also given the container a name &lt;code&gt;rstudio&lt;/code&gt; so we can easily refer to it later. We now go to &lt;code&gt;http://&amp;lt;your-droplet-ip-address&amp;gt;:8787&lt;/code&gt; and login with these custom credentials and we’re ready to compute.&lt;/p&gt;
 &lt;h3 id=&quot;saving-your-work&quot;&gt;Saving your work&lt;/h3&gt;
 &lt;p&gt;The best way to save your work is to commit your entire docker image. This will save all installed packages, active RStudio sessions, files, and everything else, even if we destroy the droplet later. This gives us the option of running our environment on a larger DigitalOcean image when the need arises, or running it locally using the &lt;code&gt;boot2docker&lt;/code&gt; approach outlined above.&lt;/p&gt;
@@ -1741,10 +1734,6 @@ CMD    [&amp;quot;/usr/sbin/sshd&amp;quot;, &amp;quot;-D&amp;quot;]&lt;/code&gt;
 
 I would like a way for a collaborator who knows a little R to be able to open my .Rmd manuscript on his/her own computer, edit some parameters, recompile and view the pdf. RStudio w/ rmarkdown has gone a long way to making that happen.
 --&gt;
-
-
-
-
 </content>
  </entry>
  
@@ -1760,9 +1749,9 @@ I would like a way for a collaborator who knows a little R to be able to open my
 &lt;/ul&gt;
 &lt;h2 id=&quot;exploring&quot;&gt;Exploring&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Poking around a bit more in Docker yesterday, built some basic R containers for testing ropensci packages. &lt;a href=&quot;https://github.com/ropensci/docker-ubuntu-r/tree/master/add-r-ropensci&quot;&gt;https://github.com/ropensci/docker-ubuntu-r/tree/master/add-r-ropensci&lt;/a&gt; . Somewhat skeptical but still curious about the potential (or the need) to publish a docker image as a reproducible research object.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Poking around a bit more in Docker yesterday, built some basic R containers for testing ropensci packages. &lt;a href=&quot;https://github.com/ropensci/docker-ubuntu-r/tree/master/add-r-ropensci&quot; class=&quot;uri&quot;&gt;https://github.com/ropensci/docker-ubuntu-r/tree/master/add-r-ropensci&lt;/a&gt; . Somewhat skeptical but still curious about the potential (or the need) to publish a docker image as a reproducible research object.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Attempted to add Travis builds to the Docker repo (just for fun, eh?), but appears Docker doesn’t support the older kernel of 12.04&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Attempted an i386 build for the BCE, but no luck. &lt;a href=&quot;https://github.com/cboettig/collaboratool/blob/master/provisioning/BCE-14.04-i386.json&quot;&gt;https://github.com/cboettig/collaboratool/blob/master/provisioning/BCE-14.04-i386.json&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Attempted an i386 build for the BCE, but no luck. &lt;a href=&quot;https://github.com/cboettig/collaboratool/blob/master/provisioning/BCE-14.04-i386.json&quot; class=&quot;uri&quot;&gt;https://github.com/cboettig/collaboratool/blob/master/provisioning/BCE-14.04-i386.json&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;reading&quot;&gt;Reading&lt;/h2&gt;
 &lt;p&gt;Fun &lt;a href=&quot;http://www.theguardian.com/higher-education-network/blog/2014/aug/05/why-we-should-publish-less-scientific-research?CMP=twt_gu&quot;&gt;piece in the Guardian&lt;/a&gt; from Digital Science manager Timo Hannay on the future of scientific publishing. I think (or choose to believe that) the thesis is at the end rather than in the title.&lt;/p&gt;
@@ -2249,8 +2238,6 @@ Venue: 2063 Valley Life Science Building.
 
 11:00 - 12:00  Way forward discussion
 &lt;/pre&gt;
-
-
 &lt;hr /&gt;
 &lt;h2 id=&quot;scratch-notes&quot;&gt;Scratch notes&lt;/h2&gt;
 &lt;p&gt;One-at-a-time sensitivity: (OAT), instead of exhaustive combinations (Latin hypercube)&lt;/p&gt;
@@ -3005,8 +2992,6 @@ a few notes
 - Karen: anthropology primates 
 
 --&gt;
-
-
 &lt;p&gt;Misc notes:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;See email from Buz for robust control reading. email to Karen.&lt;/li&gt;
@@ -3247,7 +3232,7 @@ a few notes
 &lt;hr /&gt;
 &lt;h2 id=&quot;section-2&quot;&gt;2014-03-24&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Interesting approach based on git versioning all CRAN packages to work around the troubles with archive. &lt;a href=&quot;https://github.com/metacran/tools&quot;&gt;https://github.com/metacran/tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Interesting approach based on git versioning all CRAN packages to work around the troubles with archive. &lt;a href=&quot;https://github.com/metacran/tools&quot; class=&quot;uri&quot;&gt;https://github.com/metacran/tools&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
@@ -3275,7 +3260,7 @@ a few notes
 &lt;li&gt;&lt;p&gt;This creates an added challenge in versioning, since when all the functions are together, it is sufficient to go back to the SHA at the time of publication to get the functions in their original form, while leaving them into a separate package we would have to capture two SHAs. R’s dependency mechanisms don’t handle this as well, particularly when relying on github.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Presumably it would depend on the version of &lt;code&gt;earlywarning&lt;/code&gt; in the master branch, which should ideally maintain a backwards-compatible API and have tests to catch when it doesn’t&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;I should be better at tagging the SHA at the time of publication, and possibly relying on branches to distinguish different versions.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;For instance, I started exploring further directions such as &lt;code&gt;bayeswarning.R&lt;/code&gt; on the &lt;code&gt;prosecutor&lt;/code&gt; branch of the &lt;code&gt;earlywarning&lt;/code&gt; package. The DESCRIPTION file was never recompiled on that branch, hence the install error in #1 . (The install also gives a further warning since &lt;code&gt;devtools&lt;/code&gt; has since changed the argument from &lt;code&gt;branch&lt;/code&gt; to &lt;code&gt;ref&lt;/code&gt;, since it now supports giving an arbitrary SHA instead of just a branch name). The &lt;code&gt;bayeswarning.R&lt;/code&gt; functions should have never been added to that branch (hey, it was just the branch that was currently active and I was exploring quickly), and should now be deleted, as they represent a different exploration. I’m happy to see I actually did create a branch for that. &lt;a href=&quot;https://github.com/cboettig/earlywarning/tree/bayesian/R&quot;&gt;https://github.com/cboettig/earlywarning/tree/bayesian/R&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;For instance, I started exploring further directions such as &lt;code&gt;bayeswarning.R&lt;/code&gt; on the &lt;code&gt;prosecutor&lt;/code&gt; branch of the &lt;code&gt;earlywarning&lt;/code&gt; package. The DESCRIPTION file was never recompiled on that branch, hence the install error in #1 . (The install also gives a further warning since &lt;code&gt;devtools&lt;/code&gt; has since changed the argument from &lt;code&gt;branch&lt;/code&gt; to &lt;code&gt;ref&lt;/code&gt;, since it now supports giving an arbitrary SHA instead of just a branch name). The &lt;code&gt;bayeswarning.R&lt;/code&gt; functions should have never been added to that branch (hey, it was just the branch that was currently active and I was exploring quickly), and should now be deleted, as they represent a different exploration. I’m happy to see I actually did create a branch for that. &lt;a href=&quot;https://github.com/cboettig/earlywarning/tree/bayesian/R&quot; class=&quot;uri&quot;&gt;https://github.com/cboettig/earlywarning/tree/bayesian/R&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Obviously there is a desire to maintain the original code base used in the paper, as well as to provide downstream updates, but a simple version SHA is not be sufficient. (I could also be better at tagging the SHA at time of publication, etc).&lt;/p&gt;
 &lt;p&gt;I’m not sure the best way to reflect that provenance, but it introduces challenges either way.&lt;/p&gt;
@@ -3775,10 +3760,7 @@ How to explain cyberinfrastructure?
 
 Cyberinfrastructure is a hard sell, because like any infrastructure: when it works we take it for granted unless it breaks.  Before it exists we don&#39;t realize we need it; or recognize that it is the implementation and not the idea that requires brilliance.   
 
-The other problem is nerd jargon. The problem with nerd jargon is that as a nerd, you get so incredibly excited by these words that you can&#39;t help yourself.  To us each one is this shiny new box of awesomeness.  To appreciate this, visit an Apple store on the launch of their latest product.  In a grey or black rectangle, it&#39;s just a lump of melted sand. To the buyers, it is the pinnacle of thought, design and engineering. --&gt; 
-
-
-
+The other problem is nerd jargon. The problem with nerd jargon is that as a nerd, you get so incredibly excited by these words that you can&#39;t help yourself.  To us each one is this shiny new box of awesomeness.  To appreciate this, visit an Apple store on the launch of their latest product.  In a grey or black rectangle, it&#39;s just a lump of melted sand. To the buyers, it is the pinnacle of thought, design and engineering. --&gt;
 </content>
  </entry>
  

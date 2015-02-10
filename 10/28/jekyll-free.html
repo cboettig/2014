@@ -113,7 +113,7 @@
 <p>Meanwhile, I’ve found Pandoc’s templating system to be immensely powerful, particularly with the yaml headers now supported. To provide a lightweight way to deploy a website on a gh-pages branch of a new repository, I’ve found this system works quite well. I’ve illustrated this on my <a href="https://github.com/cboettig/tree/gh-pages">gh-pages branch of my template</a> repository. Previously, this used Jekyll with the built-in redcarpet markdown parser to deploy markdown files in a style consistent with my notebook.</p>
 <p>Now, I’ve stripped this down to simply use a pandoc template, pandoc YAML, and a Makefile to accomplish much the same thing.</p>
 <p>I was dissapointed to see that the <code>_output.yaml</code> used by rmarkdown for building multi-page websites did not leverage the generic <code>metadata.yaml</code> approach already built into pandoc. This prevents us specifying custom generic metadata the way one does in Jekyll with <code>_config.yaml</code>, as I describe in <a href="https://github.com/rstudio/rmarkdown/issues/297">rmarkdown#297</a> I can work around this with the Makefile by calling pandoc manually with the additional <code>metadta.yaml</code> file, as follows:</p>
-<pre class="Make"><code>%.html: %.Rmd
+<pre class="make"><code>%.html: %.Rmd
   R --vanilla --slave -e &quot;knitr::knit(&#39;$&lt;&#39;)&quot;
   pandoc --template _layouts/default.html metadata.yaml -o $@ $(basename $&lt;).md
   rm $(basename $&lt;).md
