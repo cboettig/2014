@@ -121,7 +121,7 @@
 <span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>))) +
 <span class="st">  </span><span class="kw">facet_wrap</span>(~method) +<span class="st"> </span><span class="kw">guides</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</code></pre>
 <figure>
-<img src="http://io.carlboettiger.info/nonparametric-bayes/replicates.svg" />
+<img src="http://www.carlboettiger.info/nonparametric-bayes/replicates.svg" />
 </figure>
 <p>Statistical summaries can get around this approach, but don’t really reflect the true rather binary nature of the ensemble (that some trajectories go to zero while others remain around a constant level):</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sims_data) +
@@ -133,7 +133,7 @@
 <span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>))) +
 <span class="st">  </span><span class="kw">facet_wrap</span>(~method) +<span class="st"> </span><span class="kw">guides</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</code></pre>
 <figure>
-<img src="http://io.carlboettiger.info/nonparametric-bayes/replicates-stat-summary-sdl.svg" />
+<img src="http://www.carlboettiger.info/nonparametric-bayes/replicates-stat-summary-sdl.svg" />
 </figure>
 <p>Tweaking the statistical definitions can remove the more obvious errors from this, but still give the wrong impression:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mymin &lt;-<span class="st"> </span>function(x) <span class="kw">mean</span>(x) -<span class="st"> </span><span class="kw">sd</span>(x)
@@ -146,7 +146,7 @@
 <span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>))) +
 <span class="st">    </span><span class="kw">facet_wrap</span>(~method) +<span class="st"> </span><span class="kw">guides</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</code></pre>
 <figure>
-<img src="http://io.carlboettiger.info/nonparametric-bayes/replicates-stat-summary.svg" />
+<img src="http://www.carlboettiger.info/nonparametric-bayes/replicates-stat-summary.svg" />
 </figure>
 <h3 id="technical-challenges-in-submitting-transparent-figures">Technical challenges in submitting transparent figures</h3>
 <p>All this works great with R+ggplot2, generating svg versions shown here or in generating pdfs for the final manuscript. Try and upload those pdfs to manuscriptcentral though (or arXiv, actually) and they will render improperly or not at all. What ever happened to the “portable” in “portable document format”? (Note that submission systems can take EPS/PS, though we’d need to change our LaTeX flavor for it, but R’s graphic devices for those formats don’t seem to support transparency.</p>

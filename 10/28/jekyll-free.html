@@ -122,7 +122,7 @@
   pandoc --template _layouts/default.html metadata.yaml -o $@ $&lt; 
 </code></pre>
 <p>Note the <code>Rmd</code> building is somewhat more cumbersome since we have to bypass <code>rmarkdown:render</code> for this to work.</p>
-<p>I had to collapse all my <code>_includes</code> and nested <code>_layouts</code> into a single <code>layout</code>, replace the Jekyll Liquid blocks, <code>{{</code> with pandoc-template <code>$</code> ones, and write out a basic <code>metadata.yaml</code> file, and things are <a href="http://io.carlboettiger.info/template/">good to go</a>.</p>
+<p>I had to collapse all my <code>_includes</code> and nested <code>_layouts</code> into a single <code>layout</code>, replace the Jekyll Liquid blocks, <code>{{</code> with pandoc-template <code>$</code> ones, and write out a basic <code>metadata.yaml</code> file, and things are <a href="http://www.carlboettiger.info/template/">good to go</a>.</p>
 <hr />
 <p>Nonetheless, I sometimes wish I could break templates into more re-usable components; similar to the the way <code>_includes</code> provides re-usable components for the templates specified in the <code>_layouts</code> directory of a jekyll site.</p>
 <p>My first thought was to simply add the re-usable elements into a metadata block itself. (This seemed particularly promising since we can already have an external metadata.yaml to provide a metadata block we can use across multiple file). However, it seems that Pandoc always escape the html contents in my yaml metadata. For instance, if I add the block:</p>
